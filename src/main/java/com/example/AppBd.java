@@ -20,6 +20,7 @@ public class AppBd {
             listarEstados(conn);
             System.out.println();
             localizarEstado(conn,"BA");
+            listarDadosTabela(conn, "cliente");
             
             System.out.println();
            
@@ -48,6 +49,25 @@ public class AppBd {
                 System.out.println("Não foi possivel conectar ao banco de dados");
             }
         }
+
+    private void listarDadosTabela(Connection conn, String tabela) {
+        var sql = "select * from" + tabela;
+        System.out.println(sql);
+        try {
+            var statement = conn.createStatement();
+            var result = statement.executeQuery(sql);
+            while(result.next()){
+               int cols = result.getMetaData().getColumnCount();
+               for (int i = 1; i < cols; i++) {
+                System.out.printf("%s | ", result.getString(i));
+               }
+               System.out.println();
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            System.err.println("erro na execução da consulta");
+        }
+    }
 
     private void excluirProduto(Connection conn, long id) {
         var sql ="delete from produto where id = ?";
