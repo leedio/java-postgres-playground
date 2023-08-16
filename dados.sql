@@ -3,6 +3,33 @@
 -- Área por estado: https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_área
 -- População por estado (prévio censo 2022): https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_população
 
+
+
+
+DROP table if EXISTS transacao;
+
+CREATE table transacao(
+    id serial not null primary key,
+    cliente varchar(120) not null,
+    valor decimal(10,2) not null,
+    moeda varchar(3) not null,
+    tipo char not null
+);
+
+
+
+
+
+drop table if EXISTS aluno;
+create table aluno(
+    matricula serial not null PRIMARY KEY,
+    nome VARCHAR(120) not NULL,
+    nota1 DECIMAL(10,2),
+    nota2 DECIMAL(10,2),
+    nota3 DECIMAL(10,2)
+);
+
+
 drop table if exists item_venda;
 drop table if exists venda;
 

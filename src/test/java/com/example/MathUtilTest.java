@@ -128,4 +128,15 @@ public class MathUtilTest {
         assertEquals(esperado,obtido);
     }
 
+    @Test
+    void testMdcNenhumValor() {
+        int obtido = mdc();
+        var exception = assertThrows(IllegalArgumentException.class, MathUtil::mdc);
+        System.out.println(exception.getMessage());
+    }
+
+    void mdcSemParametros(){
+        mdc();
+    }
+
 }

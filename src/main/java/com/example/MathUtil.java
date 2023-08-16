@@ -21,6 +21,10 @@ public class MathUtil {
     } 
 
     public static int mdc (int...valores){
+        if (valores.length ==0 ){
+            throw new IllegalArgumentException("É necessário um valor para calcular o MDC");
+        }
+        
         int a = valores [0];
         for (int i = 1; i < valores.length; i++){
             a = mdc(a,valores[i]);
